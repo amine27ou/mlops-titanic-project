@@ -1,0 +1,20 @@
+stages:
+  preprocess:
+    cmd: python src/data/create_processed_data.py
+    deps:
+      - data/raw/train.csv
+      - src/data/preprocessing.py
+      - src/data/load_data.py
+    outs:
+      - data/processed/full_processed.csv
+      - data/processed/train_processed.csv
+      - data/processed/test_processed.csv
+    
+  train:
+    cmd: python src/models/train_with_mlflow.py
+    deps:
+      - data/processed/train_processed.csv
+      - src/models/train_with_mlflow.py
+    metrics:
+      - reports/mlflow_experiments.csv:
+          cache: false

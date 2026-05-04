@@ -1,0 +1,46 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src/data/create_processed_data.py
+    deps:
+    - path: data/raw/train.csv
+      hash: md5
+      md5: 2309cc5f04782ed9bb6016d9f4e381cf
+      size: 61194
+    - path: src/data/load_data.py
+      hash: md5
+      md5: 232df6f6bfb53a5b7461544ed3672e23
+      size: 1159
+    - path: src/data/preprocessing.py
+      hash: md5
+      md5: 7b7497726fe538045e9b374e2d3ab893
+      size: 2137
+    outs:
+    - path: data/processed/full_processed.csv
+      hash: md5
+      md5: a5a3eec36532cc595e6bce8aab2b024f
+      size: 19692
+    - path: data/processed/test_processed.csv
+      hash: md5
+      md5: d3088647e5c4f228aef0d4ba02ba0944
+      size: 3962
+    - path: data/processed/train_processed.csv
+      hash: md5
+      md5: abb4dc8d3dbe04ac7a7d7ec9371d38ee
+      size: 15772
+  train:
+    cmd: python src/models/train_with_mlflow.py
+    deps:
+    - path: data/processed/train_processed.csv
+      hash: md5
+      md5: abb4dc8d3dbe04ac7a7d7ec9371d38ee
+      size: 15772
+    - path: src/models/train_with_mlflow.py
+      hash: md5
+      md5: 49889f8f0f3d1cc131f2ecce14f01051
+      size: 10994
+    outs:
+    - path: reports/mlflow_experiments.csv
+      hash: md5
+      md5: ae53931fdf7035229bb80caa98b67a31
+      size: 582
