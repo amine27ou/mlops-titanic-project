@@ -9,7 +9,7 @@ stages:
       - data/processed/full_processed.csv
       - data/processed/train_processed.csv
       - data/processed/test_processed.csv
-    
+
   train:
     cmd: python src/models/train_with_mlflow.py
     deps:

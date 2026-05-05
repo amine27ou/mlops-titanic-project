@@ -6,7 +6,7 @@ MLflow is used for experiment tracking, logging parameters, metrics, and model a
 
 ## Configuration
 
-**Tracking URI:** `file:./mlruns` (local filesystem)  
+**Tracking URI:** `file:./mlruns` (local filesystem)
 **Experiment Name:** `titanic-survival-prediction`
 
 ## Experiments Logged
@@ -45,8 +45,8 @@ Then navigate to http://localhost:5000
 
 ## Best Model
 
-**Model:** Random Forest Tuned  
-**Accuracy:** XX.XX%  
+**Model:** Random Forest Tuned
+**Accuracy:** XX.XX%
 **F1 Score:** XX.XX%
 
 Selected for deployment based on highest accuracy and F1 score.

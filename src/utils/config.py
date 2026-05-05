@@ -2,7 +2,6 @@
 Configuration settings for the project.
 """
 
-import os
 from pathlib import Path
 
 # Project paths
@@ -20,5 +19,5 @@ RANDOM_STATE = 42
 TEST_SIZE = 0.2
 
 # Feature configuration
-FEATURES = ['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare']
-TARGET = 'Survived'
+FEATURES = ["Pclass", "Sex", "Age", "SibSp", "Parch", "Fare"]
+TARGET = "Survived"

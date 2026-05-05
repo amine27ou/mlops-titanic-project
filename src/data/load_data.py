@@ -3,17 +3,15 @@ Data loading utilities for Titanic dataset.
 """
 
 import pandas as pd
-from pathlib import Path
-from typing import Tuple
 
 
 def load_raw_data(data_path: str = "data/raw/train.csv") -> pd.DataFrame:
     """
     Load raw Titanic training data.
-    
+
     Args:
         data_path: Path to CSV file
-        
+
     Returns:
         DataFrame with raw data
     """
@@ -25,7 +23,7 @@ def load_raw_data(data_path: str = "data/raw/train.csv") -> pd.DataFrame:
 def get_data_overview(df: pd.DataFrame) -> None:
     """
     Print overview of dataset.
-    
+
     Args:
         df: Input DataFrame
     """

@@ -1,0 +1,3 @@
+Run ID: 92177cf04c8546ffa2074793490d82d7
+Accuracy: 0.8045
+Model: LogisticRegression

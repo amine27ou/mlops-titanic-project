@@ -18,9 +18,9 @@ This project implements a complete MLOps pipeline demonstrating:
 
 ## 📊 Dataset
 
-**Source:** [Kaggle Titanic Competition](https://www.kaggle.com/c/titanic)  
-**Size:** 891 passengers (training set)  
-**Task:** Binary classification (Survived: 0/1)  
+**Source:** [Kaggle Titanic Competition](https://www.kaggle.com/c/titanic)
+**Size:** 891 passengers (training set)
+**Task:** Binary classification (Survived: 0/1)
 **Features:** Pclass, Sex, Age, SibSp, Parch, Fare
 
 ---
@@ -176,4 +176,3 @@ This project is part of an academic assignment.
 - MLOps community resources
 
 ---
-
