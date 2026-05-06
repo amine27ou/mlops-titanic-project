@@ -1,14 +1,9 @@
 import pytest
 import pandas as pd
-from pathlib import Path
-import sys
 from data.load_data import load_raw_data
-
-sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 
 def test_load_raw_data_exists():
-    """Test that data file exists and loads."""
     df = load_raw_data("data/raw/train.csv")
 
     assert isinstance(df, pd.DataFrame), "Should return DataFrame"

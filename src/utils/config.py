@@ -1,7 +1,3 @@
-"""
-Configuration settings for the project.
-"""
-
 from pathlib import Path
 
 # Project paths

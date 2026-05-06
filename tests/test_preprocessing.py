@@ -1,17 +1,11 @@
 import pytest
 import pandas as pd
 import numpy as np
-from pathlib import Path
-import sys
 from data.preprocessing import preprocess_data, split_data
-
-# Add src to path
-sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 
 @pytest.fixture
 def sample_data():
-    """Create sample Titanic data for testing."""
     data = {
         "PassengerId": [1, 2, 3, 4, 5],
         "Survived": [0, 1, 1, 1, 0],
