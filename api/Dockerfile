@@ -1,16 +1,19 @@
-FROM python:3.10-slim
+FROM python:3.9-slim
 
 WORKDIR /app
 
-# Copy and install dependencies
 COPY api/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy model + app
+# Main app files
 COPY api/app.py .
+COPY api/model/ ./model/
 
-COPY api/model/ /app/model/
-COPY api/app.py /app/
+# Source code for prediction logic
+COPY src/ ./src/
+
+# Ensure directories exist
+RUN mkdir -p model
 
 EXPOSE 8000
 
