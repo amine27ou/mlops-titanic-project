@@ -2,19 +2,23 @@ FROM python:3.9-slim
 
 WORKDIR /app
 
-# Copy and install dependencies first (better layer caching)
+# Copy and install dependencies
 COPY api/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application code and model
+# Copy the main application
 COPY api/app.py .
+
+# Copy the model
 COPY api/model/ ./model/
 
-# Copy preprocessing and config (very important for predictions to work)
-COPY src/data/preprocessing.py ./src/data/
-COPY src/utils/config.py ./src/utils/
+# Copy source code needed for preprocessing (only if files exist)
+COPY src/data/preprocessing.py ./src/data/ 2>/dev/null || true
 
-# Create directories if needed
+# Only copy config if it exists
+COPY src/utils/config.py ./src/utils/ 2>/dev/null || true
+
+# Create directories structure
 RUN mkdir -p src/data src/utils model
 
 EXPOSE 8000
