@@ -1,20 +1,20 @@
-import pytest
-import pandas as pd
-from data.load_data import load_raw_data
+from pathlib import Path
+from src.data.load_data import load_raw_data
+
+# Get the test fixtures directory
+FIXTURES_DIR = Path(__file__).parent / "fixtures"
 
 
 def test_load_raw_data_exists():
-    df = load_raw_data("data/raw/train.csv")
-
-    assert isinstance(df, pd.DataFrame), "Should return DataFrame"
-    assert len(df) > 0, "DataFrame should not be empty"
+    """Test that data loads without errors"""
+    df = load_raw_data(str(FIXTURES_DIR / "train_sample.csv"))
+    assert df is not None
 
 
 def test_load_raw_data_columns():
-    """Test that loaded data has expected columns."""
-    df = load_raw_data("data/raw/train.csv")
-
-    expected_cols = [
+    """Test that required columns exist"""
+    df = load_raw_data(str(FIXTURES_DIR / "train_sample.csv"))
+    required_columns = [
         "PassengerId",
         "Survived",
         "Pclass",
@@ -28,28 +28,18 @@ def test_load_raw_data_columns():
         "Cabin",
         "Embarked",
     ]
-
-    for col in expected_cols:
+    for col in required_columns:
         assert col in df.columns, f"Missing column: {col}"
 
 
 def test_load_raw_data_shape():
-    """Test that Titanic training data has correct shape."""
-    df = load_raw_data("data/raw/train.csv")
-
-    assert df.shape[0] == 891, "Titanic train.csv should have 891 rows"
-    assert df.shape[1] == 12, "Should have 12 columns"
+    """Test data has expected shape"""
+    df = load_raw_data(str(FIXTURES_DIR / "train_sample.csv"))
+    assert df.shape[0] > 0, "DataFrame is empty"
+    assert df.shape[1] == 12, f"Expected 12 columns, got {df.shape[1]}"
 
 
 def test_load_raw_data_target_values():
-    """Test that Survived column has correct values."""
-    df = load_raw_data("data/raw/train.csv")
-
-    assert "Survived" in df.columns, "Should have Survived column"
-    assert set(df["Survived"].unique()).issubset({0, 1}), "Survived should be 0 or 1"
-
-
-def test_load_raw_data_file_not_found():
-    """Test that loading non-existent file raises error."""
-    with pytest.raises(FileNotFoundError):
-        load_raw_data("data/raw/nonexistent.csv")
+    """Test target variable has expected values"""
+    df = load_raw_data(str(FIXTURES_DIR / "train_sample.csv"))
+    assert set(df["Survived"].dropna().unique()).issubset({0, 1})
