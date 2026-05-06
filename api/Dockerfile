@@ -2,20 +2,20 @@ FROM python:3.9-slim
 
 WORKDIR /app
 
-# Install dependencies
+# Copy API requirements and install
 COPY api/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy FastAPI app
 COPY api/app.py .
 
-# Copy model
+# Copy trained model
 COPY api/model/ ./model/
 
-# Copy source code (this is the key line)
+# Copy source code (needed for preprocessing during prediction)
 COPY src/ ./src/
 
-# Make sure directories exist
+# Create directories
 RUN mkdir -p ./model ./src/data ./src/utils
 
 EXPOSE 8000
