@@ -2,7 +2,7 @@ FROM python:3.9-slim
 
 WORKDIR /app
 
-# Copy API requirements and install
+# Install dependencies
 COPY api/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
@@ -12,10 +12,9 @@ COPY api/app.py .
 # Copy trained model
 COPY api/model/ ./model/
 
-# Copy source code (needed for preprocessing during prediction)
+# Copy source code (preprocessing + utils)
 COPY src/ ./src/
 
-# Create directories
 RUN mkdir -p ./model ./src/data ./src/utils
 
 EXPOSE 8000

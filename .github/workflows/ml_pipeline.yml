@@ -11,10 +11,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
+
+    - name: Download Titanic Dataset
+      run: |
+        mkdir -p data/raw
+        wget -O data/raw/train.csv https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv
 
     - name: Set up Python 3.9
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.9'
 
@@ -38,15 +43,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Build Docker image
       run: |
-        docker build -t titanic-api:latest ./api
+        # Build from ROOT with correct context
+        docker build -t titanic-api:latest -f api/Dockerfile .
 
     - name: Test Docker container
       run: |
         docker run -d -p 8000:8000 --name test-api titanic-api:latest
-        sleep 10
+        sleep 8
         curl -f http://localhost:8000/health || exit 1
         docker stop test-api
