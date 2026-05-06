@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM python:3.10-slim
 
 WORKDIR /app
 
@@ -6,20 +6,11 @@ WORKDIR /app
 COPY api/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the main application
+# Copy model + app
 COPY api/app.py .
 
-# Copy the model
-COPY api/model/ ./model/
-
-# Copy source code needed for preprocessing (only if files exist)
-COPY src/data/preprocessing.py ./src/data/ 2>/dev/null || true
-
-# Only copy config if it exists
-COPY src/utils/config.py ./src/utils/ 2>/dev/null || true
-
-# Create directories structure
-RUN mkdir -p src/data src/utils model
+COPY api/model/ /app/model/
+COPY api/app.py /app/
 
 EXPOSE 8000
 
