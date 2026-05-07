@@ -1,0 +1,83 @@
+{
+  "metrics": [
+    {
+      "id": "15e89f895b482f9b84ba7274ed18a106",
+      "metric_name": "DriftedColumnsCount(drift_share=0.5)",
+      "config": {
+        "type": "evidently:metric_v2:DriftedColumnsCount",
+        "drift_share": 0.5
+      },
+      "value": {
+        "count": 1.0,
+        "share": 0.16666666666666666
+      }
+    },
+    {
+      "id": "8f5d1c60a32d6fc1bd54bc53af61d8e8",
+      "metric_name": "ValueDrift(column=Age,method=K-S p_value,threshold=0.05)",
+      "config": {
+        "type": "evidently:metric_v2:ValueDrift",
+        "column": "Age",
+        "method": "K-S p_value",
+        "threshold": 0.05
+      },
+      "value": 0.7872519166016576
+    },
+    {
+      "id": "619014d1829823dd60e662a5b5925069",
+      "metric_name": "ValueDrift(column=Fare,method=K-S p_value,threshold=0.05)",
+      "config": {
+        "type": "evidently:metric_v2:ValueDrift",
+        "column": "Fare",
+        "method": "K-S p_value",
+        "threshold": 0.05
+      },
+      "value": 0.9532870706859005
+    },
+    {
+      "id": "4091f8f4147c7533b160dc03cb81b578",
+      "metric_name": "ValueDrift(column=Pclass,method=chi-square p_value,threshold=0.05)",
+      "config": {
+        "type": "evidently:metric_v2:ValueDrift",
+        "column": "Pclass",
+        "method": "chi-square p_value",
+        "threshold": 0.05
+      },
+      "value": 0.9725466786345194
+    },
+    {
+      "id": "aa451151247cea20edd37ac847adbed1",
+      "metric_name": "ValueDrift(column=Sex,method=Z-test p_value,threshold=0.05)",
+      "config": {
+        "type": "evidently:metric_v2:ValueDrift",
+        "column": "Sex",
+        "method": "Z-test p_value",
+        "threshold": 0.05
+      },
+      "value": 0.08408652871884215
+    },
+    {
+      "id": "aa8f839eaeab82167eac51ffedecd7d2",
+      "metric_name": "ValueDrift(column=SibSp,method=chi-square p_value,threshold=0.05)",
+      "config": {
+        "type": "evidently:metric_v2:ValueDrift",
+        "column": "SibSp",
+        "method": "chi-square p_value",
+        "threshold": 0.05
+      },
+      "value": 0.8494853637992178
+    },
+    {
+      "id": "b32c17076553418980635232978fb1e0",
+      "metric_name": "ValueDrift(column=Parch,method=chi-square p_value,threshold=0.05)",
+      "config": {
+        "type": "evidently:metric_v2:ValueDrift",
+        "column": "Parch",
+        "method": "chi-square p_value",
+        "threshold": 0.05
+      },
+      "value": 0.0
+    }
+  ],
+  "tests": []
+}

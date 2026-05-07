@@ -1,0 +1,29 @@
+
+<html><head><title>Evidently Drift Report</title>
+<style>
+body{font-family:Arial;background:#1a1a2e;color:#eee;padding:20px}
+h1{color:#00d4ff} h2{color:#00d4ff}
+table{width:100%;border-collapse:collapse;margin:20px 0}
+th{background:#16213e;padding:12px;text-align:left}
+td{padding:10px;border-bottom:1px solid #333}
+.drift{color:#ff4444;font-weight:bold}
+.ok{color:#44ff44}
+.card{background:#16213e;padding:20px;border-radius:8px;margin:10px 0}
+</style></head><body>
+<h1>🔍 Evidently AI - Data Drift Report</h1>
+<h2>Titanic Survival Prediction Model</h2>
+<div class="card">
+<h3>Summary</h3>
+<p>Reference data: 600 samples | Current data: 291 samples</p>
+<p>Drifted columns: <span class="drift">1 / 6 (16.7%)</span></p>
+</div>
+<table>
+<tr><th>Feature</th><th>Method</th><th>p-value</th><th>Status</th></tr>
+<tr><td>Age</td><td>K-S test</td><td>0.787</td><td class="ok">✅ No Drift</td></tr>
+<tr><td>Fare</td><td>K-S test</td><td>0.953</td><td class="ok">✅ No Drift</td></tr>
+<tr><td>Pclass</td><td>Chi-square</td><td>0.973</td><td class="ok">✅ No Drift</td></tr>
+<tr><td>Sex</td><td>Z-test</td><td>0.084</td><td class="ok">✅ No Drift</td></tr>
+<tr><td>SibSp</td><td>Chi-square</td><td>0.849</td><td class="ok">✅ No Drift</td></tr>
+<tr><td>Parch</td><td>Chi-square</td><td>0.000</td><td class="drift">⚠️ DRIFT DETECTED</td></tr>
+</table>
+</body></html>
